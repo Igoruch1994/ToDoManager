@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="CodeFirst:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/CodeFirst_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="CodeFirst/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="CodeFirst" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

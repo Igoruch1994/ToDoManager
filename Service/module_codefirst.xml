@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_codefirst" default="compile.module.codefirst">
+  <dirname property="module.codefirst.basedir" file="${ant.file.module_codefirst}"/>
+  
+  <property name="module.jdk.home.codefirst" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.codefirst" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.codefirst" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.codefirst" value="-encoding UTF-8 -source 1.5 -target 1.5 ${compiler.args}"/>
+  
+  <property name="codefirst.output.dir" value="${module.codefirst.basedir}/target/classes"/>
+  <property name="codefirst.testoutput.dir" value="${module.codefirst.basedir}/target/test-classes"/>
+  
+  <path id="codefirst.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="codefirst.module.production.classpath">
+    <path refid="${module.jdk.classpath.codefirst}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.2.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.2.1.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+  </path>
+  
+  <path id="codefirst.runtime.production.module.classpath">
+    <pathelement location="${codefirst.output.dir}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.2.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.2.1.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+  </path>
+  
+  <path id="codefirst.module.classpath">
+    <path refid="${module.jdk.classpath.codefirst}"/>
+    <pathelement location="${codefirst.output.dir}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.2.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.2.1.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+  </path>
+  
+  <path id="codefirst.runtime.module.classpath">
+    <pathelement location="${codefirst.testoutput.dir}"/>
+    <pathelement location="${codefirst.output.dir}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.25.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.2.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.2.1.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.codefirst">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.codefirst">
+    <patternset refid="excluded.from.module.codefirst"/>
+  </patternset>
+  
+  <path id="codefirst.module.sourcepath">
+    <dirset dir="${module.codefirst.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="codefirst.module.test.sourcepath">
+    <dirset dir="${module.codefirst.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.codefirst" depends="compile.module.codefirst.production,compile.module.codefirst.tests" description="Compile module CodeFirst"/>
+  
+  <target name="compile.module.codefirst.production" depends="register.custom.compilers" description="Compile module CodeFirst; production classes">
+    <mkdir dir="${codefirst.output.dir}"/>
+    <javac2 destdir="${codefirst.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.codefirst}/javac">
+      <compilerarg line="${compiler.args.codefirst}"/>
+      <bootclasspath refid="codefirst.module.bootclasspath"/>
+      <classpath refid="codefirst.module.production.classpath"/>
+      <src refid="codefirst.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.codefirst"/>
+    </javac2>
+    
+    <copy todir="${codefirst.output.dir}">
+      <fileset dir="${module.codefirst.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.codefirst.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.codefirst.tests" depends="register.custom.compilers,compile.module.codefirst.production" description="compile module CodeFirst; test classes" unless="skip.tests">
+    <mkdir dir="${codefirst.testoutput.dir}"/>
+    <javac2 destdir="${codefirst.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.codefirst}/javac">
+      <compilerarg line="${compiler.args.codefirst}"/>
+      <bootclasspath refid="codefirst.module.bootclasspath"/>
+      <classpath refid="codefirst.module.classpath"/>
+      <src refid="codefirst.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.codefirst"/>
+    </javac2>
+    
+    <copy todir="${codefirst.testoutput.dir}">
+      <fileset dir="${module.codefirst.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.codefirst" description="cleanup module">
+    <delete dir="${codefirst.output.dir}"/>
+    <delete dir="${codefirst.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="appToDo" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://use.fontawesome.com/4688c0f624.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/Manager.css">
+    <script src="../js/ManagerJS.js" ></script>
+</head>
+<body ng-controller="ManagerToDoCtrl">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 panel panel-primary toolBar" >
+        <div class="panel-heading" >
+            <span    class="fa fa-check-square-o fa-2x" ></span> <b>ToDo Manager<h2 style="float: right" class="userInfo">{{personalInfo.login}}<i  style="float: right;padding-left: 20px" ng-click="logout()" class="fa fa-sign-out " aria-hidden="true" "></i></h2></b>
+
+
+
+        </div>
+    </div>
+
+
+<div class="col-lg-3 col-md-3 col-sm-3 panelPaddingGroups" ng-init="GetPersonalInfo()">
+<div class="panel panel-success" >
+    <div class="panel-heading" >
+        <span ng-click="GetConversationOfCurrentUser()"   class="fa fa-bars fa-2x" ></span> <b style="color: black;margin-left: 20%">ToDo List</b>
+        <a><i style="float: right" ng-click="createTaskGroup=true" class="fa fa-plus fa-2x faPlusMargin" aria-hidden="true"></i></a>
+
+    </div>
+    <div class="panel-collapse collapse in groups">
+        <div class="panel-body  taskGroup">
+            <div ng-if="createTaskGroup==true">
+                <input ng-model="createTaskGroupInput"  class="form-control"  placeholder="TaskGroup name">
+                <button style="margin:5px 0px 10px 0px" type="submit" class="btn btn-sm btn-block btn-success " ng-click="createNewTaskGroup(createTaskGroupInput)">Create new!</button>
+            </div>
+            <div class="licat" ng-repeat="toDoGroup in CurrentUserToDoGroups " ng-click="GetCurrentToDoGroupTasks(toDoGroup)"  >
+                <li  class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <i class="fa fa-list-ol fa-2x" aria-hidden="true"></i>
+                                        <i ng-click="DeleteTaskGroups(toDoGroup.id)" class="fa fa-trash-o" aria-hidden="true"></i>
+
+                                    </span>
+                    <div class="chat-body clearfix">
+
+                        <p>
+                            {{toDoGroup.name}}
+                        </p>
+                    </div>
+                </li>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 panelPadding tasks">
+        <div class="panel panel-success" >
+            <div class="panel-heading" >
+                <span ng-click="GetConversationOfCurrentUser()" class="fa fa-thumb-tack fa-2x" ></span> <b style="color: black;margin-left: 40%">{{CurrentChooseGroup.name}} Tasks  </b>
+                <a><i ng-click="createTask=true"  style="float: right" class="fa fa-plus fa-2x faPlusMargin" aria-hidden="true"></i></a>
+
+            </div>
+            <div class="panel-collapse collapse in taskList">
+                <div class="panel-body  taskGroup">
+                    <div ng-if="createTask==true">
+                        <input ng-model="createTaskInput"  class="form-control"  placeholder="Task text">
+                        <button style="margin:5px 0px 10px 0px" type="submit" class="btn btn-sm btn-block btn-success " ng-click="createNewTasks(createTaskInput)">Create new!</button>
+
+                    </div>
+                    <div class="licat2" ng-repeat="tasks in CurrentToDoGroupTasks " ng-click="DefaultMessagePage();getMessages(conversations.id,conversations.name)"  >
+                        <li ng-if="tasks.status==true" style="background-color: rgba(170,255,112,0.6)" class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <i class="fa fa-check-circle-o fa-2x" ng-click="changeStatusOnTrue(tasks.id)" aria-hidden="true"></i>
+                                        <i class="fa fa-times fa-2x" ng-click="changeStatusOnFalse(tasks.id)" aria-hidden="true"></i>
+                                        <i style="margin-right: 10px" ng-click="DeleteTask(tasks.id)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </span>
+                        <div class="chat-body clearfix">
+
+                            <p style="margin-left: 20px">
+                                {{tasks.text}}
+                            </p>
+                        </div>
+                    </li>
+                        <li ng-if="tasks.status==false" style="background-color: rgba(255,0,0,0.37)" class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <i  class="fa fa-check-circle-o fa-2x" ng-click="changeStatusOnTrue(tasks.id)" aria-hidden="true"></i>
+                                        <i class="fa fa-times fa-2x" ng-click="changeStatusOnFalse(tasks.id)" aria-hidden="true"></i>
+                                        <i style="margin-right: 10px" ng-click="DeleteTask(tasks.id)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </span>
+                            <div class="chat-body clearfix">
+
+                                <p style="margin-left: 20px">
+                                    {{tasks.text}}
+                                </p>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

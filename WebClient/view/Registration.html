@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/RegistrationStyle.css">
+    <script src="https://use.fontawesome.com/4688c0f624.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="../js/RegistrationJs.js" ></script>
+</head>
+<body ng-controller="RegistrationCtrl">
+<div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-1 col-md-1 col-sm-2">
+    <button type="submit" class="btn btn-block btn-success hidden-md logIn" ng-click="hrefOnLogIn()" >Log in!</button>
+</div>
+<div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-lg-4 col-md-4 col-sm-4">
+    <form role="form">
+        <div class="form-group login registrTopMargin">
+            <div class="iconUser">
+                <i class="fa fa-address-book-o fa-5x" aria-hidden="true"></i>
+
+            </div>
+        </div>
+            <label >Login</label>
+            <input ng-model="login" type="text" class="form-control" id="login" placeholder="Login">
+
+        <div class="form-group login">
+            <label >Password</label>
+            <input ng-model="password" type="password"  class="form-control" id="password" placeholder="Password">
+            <p class="help-block" style="color: black">Not less than eight characters!</p>
+        </div>
+        <div class="form-group login">
+            <label >Email</label>
+            <input ng-model="email" type="email" class="form-control" id="emaill" placeholder="Email">
+        </div>
+        <div class="col-sm-offset-3 col-sm-10 col-md-7">
+            <button type="submit" class="btn btn-block btn-success hidden-md" ng-click="registration()">Create account</button>
+        </div>
+        <br>
+        <br>
+        <h3>{{RegistrData}}</h3>
+    </form>
+</div>
+</body>
+</html>
